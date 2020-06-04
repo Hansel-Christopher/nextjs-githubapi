@@ -1,83 +1,28 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Github API App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Github API
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          This is a demo app to explore the Github API with Nextjs<br />
+          <Link href="/form"><button className="glow-on-hover" type="button">Try it out!</button></Link>
         </p>
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
+      <style jsx>
+        {`
         footer {
           width: 100%;
           height: 100px;
@@ -188,6 +133,67 @@ export default function Home() {
             flex-direction: column;
           }
         }
+                      
+        .glow-on-hover {
+          width: 220px;
+          height: 50px;
+          border: none;
+          outline: none;
+          margin: 1em;
+          color: #fff;
+          background: #111;
+          cursor: pointer;
+          position: relative;
+          z-index: 0;
+          border-radius: 10px;
+        }
+
+        .glow-on-hover:before {
+          content: '';
+          background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+          position: absolute;
+          top: -2px;
+          left:-2px;
+          background-size: 400%;
+          z-index: -1;
+          filter: blur(5px);
+          width: calc(100% + 4px);
+          height: calc(100% + 4px);
+          animation: glowing 20s linear infinite;
+          opacity: 0;
+          transition: opacity .3s ease-in-out;
+          border-radius: 10px;
+        }
+
+        .glow-on-hover:active {
+          color: #000
+        }
+
+        .glow-on-hover:active:after {
+          background: transparent;
+        }
+
+        .glow-on-hover:hover:before {
+          opacity: 1;
+        }
+
+        .glow-on-hover:after {
+          z-index: -1;
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: #111;
+          left: 0;
+          top: 0;
+          border-radius: 10px;
+        }
+
+        @keyframes glowing {
+          0% { background-position: 0 0; }
+          50% { background-position: 400% 0; }
+          100% { background-position: 0 0; }
+        }
       `}</style>
 
       <style jsx global>{`
@@ -203,6 +209,25 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
+
+        .container {
+          min-height: 100vh;
+          padding: 0 0.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
+        main {
+          padding: 5rem 0;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+
       `}</style>
     </div>
   )

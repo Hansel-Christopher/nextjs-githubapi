@@ -1,13 +1,14 @@
 {
-  "name": "learn-starter",
+  "name": "github-api-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "isomorphic-unfetch": "^3.0.0",
     "next": "9.3.5",
     "react": "16.13.1",
     "react-dom": "16.13.1"
